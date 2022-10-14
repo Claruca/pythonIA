@@ -1,5 +1,6 @@
 from auxFunctions import *
 
+# Estructura de datos de un nodo
 
 def ident(nodo): return car(nodo)
 
@@ -15,6 +16,11 @@ def operador(nodo): return car(cdddr(nodo))
 
 def info(nodo): return cdr(cdddr(nodo))
 
+def construye_nodo(ident, estado, id_padre, op, info):
+    return [ident, estado, id_padre, op] + info
+
+
+#Estructura del problema
 
 def operadores(problema): return car(problema)
 
@@ -31,10 +37,9 @@ def funcion_objetivo(problema): return car(cdddr(problema))
 def info_inicial(problema): return car(cdr(cdddr(problema)))
 
 
-def construye_nodo(ident, estado, id_padre, op, info):
-    return [ident, estado, id_padre, op] + info
 
 
+#búsqueda recursiva
 def busqueda(problema, estrategia, arbol):
     if (not candidatos(arbol)):
         return ['no_hay_solucion']
